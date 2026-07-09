@@ -17,4 +17,4 @@ Static dashboard for browsing prelesson game scope & sequence content, with shar
    - **KV namespace:** the namespace you created
 4. Redeploy the site after adding the binding.
 
-Checkboxes call `/api/asset-progress` (Pages Function). Progress is stored in KV so all users see the same checks. localStorage is only a short-term cache if the API is unreachable.
+Checkboxes call `/api/asset-progress` (Pages Function). Progress is stored in KV so all users see the same checks. While the Asset Lists page is open, the browser polls every 3 seconds (paused when the tab is hidden). Other pages do not poll. localStorage is only a short-term cache if the API is unreachable.
