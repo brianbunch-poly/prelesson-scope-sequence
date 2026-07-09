@@ -7,10 +7,12 @@ Static dashboard for browsing prelesson game scope & sequence content, with shar
 1. Connect this repository in Cloudflare Pages.
 2. In the Pages project → **Settings** → **Builds & deployments** → **Build configuration**:
    - **Framework preset:** None
-   - **Build command:** leave **empty** (do not use `npx wrangler deploy`)
-   - **Deploy command:** leave **empty** / default (Pages deploys for you)
+   - **Build command:** leave empty
+   - **Deploy command:** `npx wrangler pages deploy public`
    - **Build output directory:** `public`
 3. Save, then **Retry deployment**.
+
+Do **not** use `npx wrangler deploy` — that is for Workers and will fail on this Pages project.
 
 Entry point is `public/index.html`. Functions live in `/functions` at the repo root.
 
