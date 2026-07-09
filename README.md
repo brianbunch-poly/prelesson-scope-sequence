@@ -5,8 +5,11 @@ Static dashboard for browsing prelesson game scope & sequence content, with shar
 ## Cloudflare Pages setup
 
 1. Connect this repository in Cloudflare Pages.
-2. Build settings: leave **Build command** empty; **Output directory** `/` (or blank).
-3. Entry point is `index.html`.
+2. Build settings:
+   - **Framework preset:** None
+   - **Build command:** leave empty
+   - **Build output directory:** `public`
+3. Entry point is `public/index.html`. Functions live in `/functions` at the repo root.
 
 ### Shared asset progress (required)
 

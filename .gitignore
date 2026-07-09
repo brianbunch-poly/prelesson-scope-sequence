@@ -1,8 +1,11 @@
 # Ignore everything in this working tree
 *
 # Keep only Cloudflare Pages hosting files
-!index.html
-!.gitignore
-!README.md
+!public/
+!public/**
 !functions/
 !functions/**
+!wrangler.toml
+!package.json
+!.gitignore
+!README.md
