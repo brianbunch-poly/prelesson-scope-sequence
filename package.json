@@ -1,7 +1,4 @@
 {
   "name": "prelesson-scope-sequence",
-  "private": true,
-  "scripts": {
-    "pages:build": "echo Static site - no build step"
-  }
+  "private": true
 }
