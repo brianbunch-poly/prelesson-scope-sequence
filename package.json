@@ -2,6 +2,6 @@
   "name": "prelesson-scope-sequence",
   "private": true,
   "scripts": {
-    "deploy": "wrangler pages deploy public"
+    "deploy": "wrangler deploy"
   }
 }

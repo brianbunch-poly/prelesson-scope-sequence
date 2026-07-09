@@ -1,10 +1,10 @@
 # Ignore everything in this working tree
 *
-# Keep only Cloudflare Pages hosting files
+# Keep only Cloudflare Workers hosting files
 !public/
 !public/**
-!functions/
-!functions/**
+!src/
+!src/**
 !wrangler.toml
 !package.json
 !.gitignore

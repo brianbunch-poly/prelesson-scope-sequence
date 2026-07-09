@@ -1,28 +1,29 @@
 # Prelesson Game Scope & Sequence
 
-Static dashboard for browsing prelesson game scope & sequence content, with shared asset checklist progress via Cloudflare KV.
+Static dashboard with shared asset checklist progress via Cloudflare Workers + KV.
 
-## Cloudflare Pages setup
+## Cloudflare Workers setup
 
-1. Connect this repository in Cloudflare Pages.
-2. In the Pages project → **Settings** → **Builds & deployments** → **Build configuration**:
-   - **Framework preset:** None
-   - **Build command:** leave empty
-   - **Deploy command:** `npx wrangler pages deploy public`
-   - **Build output directory:** `public`
-3. Save, then **Retry deployment**.
+This project deploys as a **Worker with static assets** (not classic Pages Functions).
 
-Do **not** use `npx wrangler deploy` — that is for Workers and will fail on this Pages project.
+### Build / deploy settings in Cloudflare
 
-Entry point is `public/index.html`. Functions live in `/functions` at the repo root.
+- **Framework preset:** None
+- **Build command:** empty
+- **Deploy command:** `npx wrangler deploy`
+- **Build output directory:** `public` (if the field is shown)
 
-### Shared asset progress (required)
+### KV binding (required for shared checkboxes)
 
-1. In Cloudflare Dashboard → **Storage & Databases** → **KV** → create a namespace (e.g. `prelesson-asset-progress`).
-2. Open your Pages project → **Settings** → **Bindings** → **KV namespace bindings**.
-3. Add a binding:
-   - **Variable name:** `ASSET_PROGRESS` (must match exactly)
-   - **KV namespace:** the namespace you created
-4. Redeploy the site after adding the binding.
+1. Cloudflare Dashboard → **Storage & Databases** → **KV** → create a namespace (e.g. `prelesson-asset-progress`) if you do not have one.
+2. Open this Worker project → **Settings** → **Bindings** → **Add** → **KV namespace**.
+3. Set:
+   - **Variable name:** `ASSET_PROGRESS` (exact spelling)
+   - **KV namespace:** your namespace
+4. Save, then redeploy.
 
-Checkboxes call `/api/asset-progress` (Pages Function). Progress is stored in KV so all users see the same checks. While the Asset Lists page is open, the browser polls every 3 seconds (paused when the tab is hidden). Other pages do not poll. localStorage is only a short-term cache if the API is unreachable.
+### What gets deployed
+
+- `public/index.html` — the dashboard
+- `src/index.js` — Worker API at `/api/asset-progress`
+- Checkboxes sync through KV; Asset Lists polls every 3 seconds while open
