@@ -1,0 +1,6 @@
+# Ignore everything in this working tree
+*
+# Keep only the Cloudflare Pages entry point
+!index.html
+!.gitignore
+!README.md
