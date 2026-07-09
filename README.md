@@ -15,12 +15,7 @@ This project deploys as a **Worker with static assets** (not classic Pages Funct
 
 ### KV binding (required for shared checkboxes)
 
-1. Cloudflare Dashboard → **Storage & Databases** → **KV** → create a namespace (e.g. `prelesson-asset-progress`) if you do not have one.
-2. Open this Worker project → **Settings** → **Bindings** → **Add** → **KV namespace**.
-3. Set:
-   - **Variable name:** `ASSET_PROGRESS` (exact spelling)
-   - **KV namespace:** your namespace
-4. Save, then redeploy.
+Configured in `wrangler.toml` as `ASSET_PROGRESS` with your Workers KV namespace ID. Redeploy after changing the ID.
 
 ### What gets deployed
 
