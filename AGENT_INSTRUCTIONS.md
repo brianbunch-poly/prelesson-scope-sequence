@@ -145,7 +145,7 @@ Exit gate → bg_ending_transition (push on screen)
 
 | Column | Folder | Contents |
 |--------|--------|----------|
-| `Title_Screen_Assets` | `ui/` | `game_title.webp`, `game_subtitle.webp` (loading / branding) |
+| `Title_Screen_Assets` | `title_screen/` | `game_title.webp`, `game_subtitle.webp` (loading / branding) |
 | `Map_Assets` | `map/` | Map backgrounds, masks, enter/exit frames; lesson-specific map sprites (e.g. `ant.webp`, `bee.webp`, `butterfly.webp` on Fly High L1) |
 | `Quest_Assets` | `quest/` | `player_vehicle.webp`, `pregame_popup.webp`, `postgame_popup.webp` |
 | `Antagonist_Assets` | `antagonist/` | `[slug]_spritesheet.webp` when character present; otherwise `N/A` |
