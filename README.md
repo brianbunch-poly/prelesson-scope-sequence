@@ -25,7 +25,7 @@ Configured in `wrangler.toml` as `ASSET_PROGRESS` with your Workers KV namespace
 - `src/index.js` — Worker API at `/api/asset-progress`
 - Checkboxes sync through KV; Asset Lists polls every 3 seconds while open
 
-Checkbox state is keyed by asset path (e.g. `quest/pregame_popup.webp`). Renaming assets after deploy may require re-checking boxes.
+Checkbox state is keyed by asset path (e.g. `quest/player_vehicle.webp`, `quest/pregame_popup.webp`). Renaming assets after deploy may require re-checking boxes.
 
 ## Regenerating lesson content (local)
 

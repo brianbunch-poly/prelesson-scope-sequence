@@ -151,12 +151,13 @@ The Excel plan and `build_asset_manifest()` in `generate_scope_sequence.py` list
 - Entrance frames (`bg_enter_02/03/04.webp`)
 - Exit frames (`bg_exit_01/02.webp`)
 - 3 collision masks (main, entrance, exit)
-- Player sprite — top-down vehicle or non-humanoid (required)
-- 3 mission reward icons from `reward_desc`
-- `game_title.webp`, `game_subtitle.webp`
+- `player_vehicle.webp` in `quest/` (top-down vehicle or non-humanoid — required)
+- 3 mission reward icons from `reward_desc` (listed in `M1_Assets`, `M2_Assets`, `M3_Assets`)
+- `game_title.webp`, `game_subtitle.webp` (Title Screen Assets)
 - `bg_ending_transition.webp`, `bg_ending_main.webp`, `bg_ending_1` … `bg_ending_N.webp`
 
-**Quest popups** *(every lesson — both in `quest/` folder)*
+**Quest popups & player** *(every lesson — in `quest/` folder)*
+- `player_vehicle.webp` — top-down player vehicle sprite
 - `pregame_popup.webp` — combined pre-game popup art
 - `postgame_popup.webp` — mission-complete popup + Module Map handoff (antagonist taunt baked in if present)
 - `pregame_popup_audio.mp3`, `postgame_popup_audio.mp3`
@@ -178,17 +179,17 @@ The Excel plan and `build_asset_manifest()` in `generate_scope_sequence.py` list
 - `screen_base`, `screen_transition`, `slideshow_##` (renamed to `bg_ending_*`)
 
 **Ambient decor** (optional per lesson)
-- Map sprites (e.g. `tribal_person.webp` on L7 tribal village)
+- Map sprites (e.g. `ant.webp`, `bee.webp`, `butterfly.webp` on Fly High L1; `tribal_person.webp` on L7 tribal village)
 - Ending screen decor sprites
 
 **Mission 1** — Find It / What's Missing / Memory Match (per level)
-- Scene, mask/cards, per-item art
+- Scene, mask/cards, per-item art, plus `reward_m1_*.webp`
 
 **Mission 2 — Reading Challenge**
-- `story_4panel.webp`
+- `story_4panel.webp`, plus `reward_m2_*.webp`
 
 **Mission 3 — Words I Know**
-- 10 `quiz_[word].webp` illustrations
+- 10 `quiz_[word].webp` illustrations, plus `reward_m3_*.webp`
 
 **Intro video**
 - `intro.mp4`
@@ -445,18 +446,13 @@ Follow format and rules from `SAMPLE_APP.md` Section 25. All n8n prompts must id
 
 | Column | Description |
 |--------|-------------|
-| `UI_Assets` | List: game_title, game_subtitle (loading / branding UI) |
-| `Map_Assets` | List: background_main, overlay, enter/exit frames |
-| `Collision_Masks` | 3 mask descriptions |
-| `Player_Assets` | Top-down vehicle or non-humanoid sprite files (required) |
-| `PolyPal_Assets` | PolyPal HUD avatar (`polypal.png` or template `speaking agent.png`) |
+| `Title_Screen_Assets` | List: `game_title.webp`, `game_subtitle.webp` (loading / branding) |
+| `Map_Assets` | List: backgrounds, overlays, enter/exit frames, collision masks, lesson map sprites |
+| `Quest_Assets` | `player_vehicle.webp`, `pregame_popup.webp`, `postgame_popup.webp` |
 | `Antagonist_Assets` | `[slug]_spritesheet.webp` when character present; otherwise `N/A` |
-| `Quest_Assets` | `pregame_popup.webp` + `postgame_popup.webp` (combined popup art — always required) |
-| `Reward_Assets` | 3 mission reward icons |
-| `Zone_Decor_Assets` | Ambient sprites per zone |
-| `M1_Assets` | Scene, mask, label images |
-| `M2_Assets` | Story illustration |
-| `M3_Assets` | Quiz question images |
+| `M1_Assets` | Mission 1 scene/items **plus** `reward_m1_*.webp` |
+| `M2_Assets` | `story_4panel.webp` **plus** `reward_m2_*.webp` |
+| `M3_Assets` | Quiz question images **plus** `reward_m3_*.webp` |
 | `Ending_Assets` | `bg_ending_transition`, `bg_ending_main`, `bg_ending_1`…`N` (Module Map reveal + cover-up overlays) |
 | `Video_Assets` | Intro MP4 filename |
 | `Audio_Assets` | `bg_music`, mission/exit stings, `ending_song`, `pregame_popup_audio`, `postgame_popup_audio` |

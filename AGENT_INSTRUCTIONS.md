@@ -66,6 +66,7 @@ Set `m1_landmark`, `m2_landmark`, `m3_landmark` in the design dict. `m1_zone` is
 |-------|--------|---------|
 | `pregame_popup.webp` | `quest/` | Single combined pre-game popup art (background + PolyPal bubble + character **if present** in the artwork) |
 | `postgame_popup.webp` | `quest/` | Single combined post-game popup art (mission complete + Module Map handoff; character **if present**) |
+| `player_vehicle.webp` | `quest/` | Top-down player vehicle sprite (driving); renamed from `vehicle_top.webp` |
 
 **Removed per lesson** (do not list in asset manifests):
 - `popup_step1.webp`, `popup_step2.webp`
@@ -85,8 +86,6 @@ Set `m1_landmark`, `m2_landmark`, `m3_landmark` in the design dict. `m1_zone` is
 |-------|---------|
 | `pregame_popup_audio.mp3` | Pre-game popup sting (replaces `[character]_intro.mp3`) |
 | `postgame_popup_audio.mp3` | Post-game popup sting (replaces `[character]_ending.mp3`) |
-
-Defined in `build_asset_manifest()` in `generate_scope_sequence.py`.
 
 Defined in `build_asset_manifest()` in `generate_scope_sequence.py`.
 
@@ -137,10 +136,29 @@ Exit gate → bg_ending_transition (push on screen)
 
 ### 0.7 Notable Fly High narrative notes
 
-- **L1:** Mr. Grasshopper’s hopping spell; collect **ant token**, **bee token**, **butterfly token** at the three map areas; unlock farm gate; chase on Module Map.
+- **L1:** Mr. Grasshopper’s hopping spell; collect **ant token**, **bee token**, **butterfly token** at the three map areas; map sprites `ant.webp`, `bee.webp`, `butterfly.webp`; unlock farm gate; chase on Module Map.
 - **L3:** Close **pen gates** (not collect signs); Strawbert opened pens; rewards ordered chicken → pig → cow to match mission areas.
 - **L7:** Ripped sail; repair at shipyard, help tribe build yurt at tribal village, recover treasure map on volcano island; rewards: ship frame section, yurt canvas, treasure map; `tribal_person.webp` map sprite on tribal village.
 - **L8:** Public park picnic; basket at flower garden, picnic fruits at fruit stand, drink cooler at lemonade stand; **picnic pavilion** is the finale exit (not a mission loot zone).
+
+### 0.8 Dashboard asset sections (`Asset_Lists` columns)
+
+| Column | Folder | Contents |
+|--------|--------|----------|
+| `Title_Screen_Assets` | `ui/` | `game_title.webp`, `game_subtitle.webp` (loading / branding) |
+| `Map_Assets` | `map/` | Map backgrounds, masks, enter/exit frames; lesson-specific map sprites (e.g. `ant.webp`, `bee.webp`, `butterfly.webp` on Fly High L1) |
+| `Quest_Assets` | `quest/` | `player_vehicle.webp`, `pregame_popup.webp`, `postgame_popup.webp` |
+| `Antagonist_Assets` | `antagonist/` | `[slug]_spritesheet.webp` when character present; otherwise `N/A` |
+| `M1_Assets` | `mission1_*` | Mission 1 scene/items **plus** `reward_m1_*.webp` |
+| `M2_Assets` | `mission2_reading/` | `story_4panel.webp` **plus** `reward_m2_*.webp` |
+| `M3_Assets` | `mission3_vocab/` | Quiz illustrations **plus** `reward_m3_*.webp` |
+| `Ending_Assets` | `ending/` | `bg_ending_transition`, `bg_ending_main`, `bg_ending_1`…`N` |
+| `Video_Assets` | `video/` | `intro.mp4` |
+| `Audio_Assets` | `audio/` | Music, SFX, popup stings |
+
+**Removed columns:** `UI_Assets` (renamed → `Title_Screen_Assets`), `Player_Assets` (merged into `Quest_Assets`), `Reward_Assets` (split into `M1_Assets` / `M2_Assets` / `M3_Assets`).
+
+**Renamed file:** `vehicle_top.webp` → `player_vehicle.webp` (now listed under Quest Assets).
 
 ---
 
@@ -387,7 +405,7 @@ When `Purpose_And_Goals` (or underlying design fields) change, sync related cont
 |-------|-------------------------|
 | `Game_Overview` | `Purpose_And_Goals`, `Mission_Rewards`, `Setting`, `Player_Avatar`, `Antagonist`, `Quest_Flow`, `Activity_Name` |
 | `Agent_Details` | Welcome / start / exit / module map / ending lines; n8n prompts that mention rewards or quest |
-| `Asset_Lists` | `Reward_Assets`, `Quest_Assets`, `Antagonist_Assets`, ending assets if story payoff changes |
+| `Asset_Lists` | `Quest_Assets`, `M1_Assets`, `M2_Assets`, `M3_Assets`, `Antagonist_Assets`, ending assets if story payoff changes |
 | `Video_Information` | Video connection lines that mention rewards/quest |
 | `Mission_*_Details` | Only if zone names or mission framing must match new narrative |
 | `Dev_Details` | Notes if complexity/story approach changed |
