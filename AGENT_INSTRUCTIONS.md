@@ -137,7 +137,7 @@ Exit gate → bg_ending_transition (push on screen)
 ### 0.7 Notable Fly High narrative notes
 
 - **L1:** Mr. Grasshopper’s hopping spell; collect **ant token**, **bee token**, **butterfly token** at the three map areas; map sprites `ant.webp`, `bee.webp`, `butterfly.webp`; unlock farm gate; chase on Module Map.
-- **L3:** Close **pen gates** (not collect signs); Strawbert opened pens; rewards ordered chicken → pig → cow to match mission areas.
+- **L3:** Close **pen gates** in the prelesson (not collect signs); Strawbert opened pens; rewards ordered chicken → pig → cow. On the Module Map, Strawbert escapes into town, mixes up signs, and the student fixes them and stops Strawbert at the end.
 - **L7:** Ripped sail; repair at shipyard, help tribe build yurt at tribal village, recover treasure map on volcano island; rewards: ship frame section, yurt canvas, treasure map; `tribal_person.webp` map sprite on tribal village.
 - **L8:** Public park picnic; basket at flower garden, picnic fruits at fruit stand, drink cooler at lemonade stand; **picnic pavilion** is the finale exit (not a mission loot zone).
 
