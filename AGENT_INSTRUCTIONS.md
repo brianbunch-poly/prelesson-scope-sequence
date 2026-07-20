@@ -139,6 +139,7 @@ Exit gate → bg_ending_transition (push on screen)
 - **L1:** Mr. Grasshopper’s hopping spell; collect **ant token**, **bee token**, **butterfly token** at the three map areas; map sprites `ant.webp`, `bee.webp`, `butterfly.webp`; unlock farm gate; chase on Module Map.
 - **L3:** Close **pen gates** in the prelesson (not collect signs); Strawbert opened pens; rewards ordered chicken → pig → cow. On the Module Map, Strawbert escapes into town, mixes up signs, and the student fixes them and stops Strawbert at the end.
 - **L4:** Three dials fell off the clock tower; day and night stuck halfway. Prelesson: find sun/moon/star dials → install on clock tower → day/night resume → leave town. Module Map: **15 sky zones** (Dawn → Aurora); one sun (Midday Sun, zone 5), one moon (Crescent Moon, zone 9). Goal: reach the Aurora — end of the day. See §0.9.
+- **L5:** Prelesson: find wheel, propeller, wing for Professor Spark’s flyer. After parts are found, Spark assembles the machine while the student tours his **Invention Museum** (past → present, 14 famous inventions). Zone 15: Spark with the **finished flying invention**. See §0.10.
 - **L7:** Ripped sail; repair at shipyard, help tribe build yurt at tribal village, recover treasure map on volcano island; rewards: ship frame section, yurt canvas, treasure map; `tribal_person.webp` map sprite on tribal village.
 - **L8:** Public park picnic; basket at flower garden, picnic fruits at fruit stand, drink cooler at lemonade stand; **picnic pavilion** is the finale exit (not a mission loot zone).
 
@@ -167,6 +168,38 @@ Fully visible sky map in E-Poly. **One sun** (zone 5 only) and **one moon** (zon
 **Module goal:** Reach the Aurora (zone 15) — the end of the day on the sky map.
 
 **Map art rule:** Each zone is one distinct icon on the fully visible map. Do not draw multiple suns or moons. Do not combine all zones into one finale tile.
+
+### 0.10 Fly High L5 — Invention Museum (15)
+
+After the prelesson, Professor Spark **thanks** the student, **assembles the flying invention**, and sends them into his **Invention Museum** while he works. The Module Map is a **chronological walk from the past to the present** — one famous invention per zone. **E-Poly after-class activities** happen at each exhibit; **nothing is required on the map itself** at each stop beyond advancing to the next zone.
+
+**Handoff (Spark):** *“Thank you for the parts! I’ll put my flying machine together. Tour my Invention Museum — oldest to newest. I’ll have the flyer ready when you finish!”*
+
+**Module goal:** Walk the museum from the earliest invention to the latest, then reach Professor Spark and see his **finished flying invention** (zone 15).
+
+**Map art rule:** Zones 1–14 = one **museum exhibit** icon each. Zone 15 = **Professor Spark + finished flyer** only (**only** place the completed flying machine appears on the map).
+
+**Kid-friendly rule:** Invention names stay **short and simple** for 1st graders. Order is **past → present**, but dates are approximate — close enough for the museum walk, not a strict history lesson.
+
+| Zone | Invention exhibit | Era (approx.) | Narrative concept |
+|------|-------------------|---------------|-------------------|
+| 1 | **Wheel** | Long, long ago | The first big idea — rolling heavy things instead of dragging them |
+| 2 | **Boat** | Long, long ago | Floating and traveling on water |
+| 3 | **Compass** | Long ago | A tool that shows which way to go |
+| 4 | **Paper** | Long ago | Something flat to draw and write on |
+| 5 | **Glasses** | Long ago | Clear lenses that help people see better |
+| 6 | **Telescope** | Old days | Looking at far-away stars and planets |
+| 7 | **Train** | Old days | A chugging ride on tracks |
+| 8 | **Phone** | Old days | Hearing a friend's voice from far away |
+| 9 | **Light Bulb** | Old days | A safe little light for dark rooms |
+| 10 | **Car** | Newer days | Driving yourself down the road |
+| 11 | **Airplane** | Newer days | Flying high above the clouds |
+| 12 | **TV** | Newer days | Pictures and stories on a screen at home |
+| 13 | **Computer** | Newer days | A machine that stores information and helps solve problems |
+| 14 | **Robot** | Today | A machine that can move and help people |
+| 15 | **Professor Spark + finished flyer** | Today | Spark reveals the **assembled flying invention** — thank-you and payoff |
+
+**Finale beat:** While the student walked the museum, Professor Spark finished building. Zone 15 is the reveal — not a collage of all 14 exhibits on one tile.
 
 ### 0.8 Dashboard asset sections (`Asset_Lists` columns)
 
