@@ -138,9 +138,35 @@ Exit gate → bg_ending_transition (push on screen)
 
 - **L1:** Mr. Grasshopper’s hopping spell; collect **ant token**, **bee token**, **butterfly token** at the three map areas; map sprites `ant.webp`, `bee.webp`, `butterfly.webp`; unlock farm gate; chase on Module Map.
 - **L3:** Close **pen gates** in the prelesson (not collect signs); Strawbert opened pens; rewards ordered chicken → pig → cow. On the Module Map, Strawbert escapes into town, mixes up signs, and the student fixes them and stops Strawbert at the end.
-- **L4:** Three dials fell off the clock tower; day and night stuck halfway. Prelesson: find sun/moon/star dials → install on clock tower → day/night resume → leave town. Module Map: sky path morning → evening → night; goal is reach the end of the day (no clock tower plot on Module Map).
+- **L4:** Three dials fell off the clock tower; day and night stuck halfway. Prelesson: find sun/moon/star dials → install on clock tower → day/night resume → leave town. Module Map: **15 sky zones** (Dawn → Aurora); one sun (Midday Sun, zone 5), one moon (Crescent Moon, zone 9). Goal: reach the Aurora — end of the day. See §0.9.
 - **L7:** Ripped sail; repair at shipyard, help tribe build yurt at tribal village, recover treasure map on volcano island; rewards: ship frame section, yurt canvas, treasure map; `tribal_person.webp` map sprite on tribal village.
 - **L8:** Public park picnic; basket at flower garden, picnic fruits at fruit stand, drink cooler at lemonade stand; **picnic pavilion** is the finale exit (not a mission loot zone).
+
+### 0.9 Fly High L4 — Module Map sky zones (15)
+
+Fully visible sky map in E-Poly. **One sun** (zone 5 only) and **one moon** (zone 9 only). Storm before rainbow. Finale = **Aurora** (zone 15), not a collage of all zones.
+
+| Zone | Name | Visual | Concept |
+|------|------|--------|---------|
+| 1 | **Dawn** | Thin pink and gold ribbon at the very bottom of the screen | The sky is waking up! |
+| 2 | **Morning Clouds** | Fluffy bright white clouds in a pale blue sky | Climbing up into the daytime sky |
+| 3 | **Storm Cloud** | Single dark grey cloud with little rain droplets underneath | A sudden little rain shower |
+| 4 | **Rainbow** | Bright multi-colored arc looping over the storm cloud | The storm passes, leaving bright colors behind |
+| 5 | **The Midday Sun** | Brilliant smiling golden sun in bright blue sky (**only sun on the map**) | High noon! The brightest part of the day |
+| 6 | **Hot Air Balloon** | Colorful hot air balloon drifting through sunbeams | Daylight adventure — clear map destination (replaces abstract sun rays) |
+| 7 | **Sunset** | Wide strip of fiery orange and deep red; sun dipped out of view | Saying goodbye to the daytime |
+| 8 | **Twilight** | Deep purple and dark blue sky; first few tiny blinking stars | The bridge where day turns into night |
+| 9 | **The Crescent Moon** | Glowing silver crescent moon (**only moon on the map**) | Nighttime officially begins! |
+| 10 | **The Bright Planet** | One large steady unblinking silver dot (like Venus) | Exploring the brightest “star” in the night sky |
+| 11 | **Shooting Star** | Bright yellow star with a swift fading streak | A quick “Make a wish!” moment |
+| 12 | **The Big Dipper** | Stars connected by faint dotted lines (giant spoon) | How stars connect to make a picture |
+| 13 | **A Traveling Comet** | Icy blue star with long fuzzy glowing tail | A rare cosmic visitor passing by |
+| 14 | **The North Star** | Large crisp four-pointed star, still at the top of the map | The guide star that helps travelers find their way |
+| 15 | **The Aurora** | Wavy glowing curtains of neon green and purple light | Grand finale — the sky’s nighttime light show; **end of the day** |
+
+**Module goal:** Reach the Aurora (zone 15) — the end of the day on the sky map.
+
+**Map art rule:** Each zone is one distinct icon on the fully visible map. Do not draw multiple suns or moons. Do not combine all zones into one finale tile.
 
 ### 0.8 Dashboard asset sections (`Asset_Lists` columns)
 
