@@ -141,7 +141,7 @@ Exit gate → bg_ending_transition (push on screen)
 - **L4:** Three dials fell off the clock tower; day and night stuck halfway. Prelesson: find sun/moon/star dials → install on clock tower → day/night resume → leave town. Module Map: **15 sky zones** (Dawn → Aurora); one sun (Midday Sun, zone 5), one moon (Crescent Moon, zone 9). Goal: reach the Aurora — end of the day. See §0.9.
 - **L5:** Prelesson: find wheel, propeller, wing for Professor Spark’s flyer. After parts are found, Spark assembles the machine while the student tours his **Invention Museum** (past → present, 14 famous inventions). Zone 15: Spark with the **finished flying invention**. See §0.10.
 - **L6:** Prelesson: find drum, guitar, trumpet so the Sunset Strings can **practice** for tonight’s concert. After practice, the band invites the student to the **Starlight Concert** at the **Sound Garden** — follow the **Sound Trail** (quiet → loud). Zone 15: **Sound Garden stage** (finale concert). See §0.11.
-- **L7:** Ripped sail; repair at shipyard, help tribe build yurt at tribal village, recover treasure map on volcano island; rewards: ship frame section, yurt canvas, treasure map; `tribal_person.webp` map sprite on tribal village.
+- **L7:** Prelesson: repair sail at shipyard, help tribe build yurt, recover treasure map on volcano island. Module Map: **open ocean** — sail island to island following the map. Zone 15: **buried treasure**. See §0.12.
 - **L8:** Public park picnic; basket at flower garden, picnic fruits at fruit stand, drink cooler at lemonade stand; **picnic pavilion** is the finale exit (not a mission loot zone).
 
 ### 0.9 Fly High L4 — Module Map sky zones (15)
@@ -231,6 +231,38 @@ Prelesson: the Sunset Strings are missing drum, guitar, and trumpet — they **c
 | 15 | **Sound Garden stage** | **Band playing, crowd cheering — Starlight Concert** |
 
 **Finale beat:** The prelesson concert was **practice**. Zone 15 is tonight’s **Starlight Concert** — the Module Map reward.
+
+### 0.12 Fly High L7 — Open Ocean Treasure Route (15)
+
+Prelesson: repair the ripped sail at **shipyard island**, help the nomads build a yurt at the **tribal village**, and recover the **treasure map** on **volcano island**. After the open-sea gate opens, the Module Map is **open ocean** — sail from island to island (and through special sea areas) **following the treasure map**. **E-Poly after-class activities** happen at each stop; **nothing is required on the map itself** at each stop beyond advancing to the next zone.
+
+**Handoff:** *“You found the treasure map! Sail through the open sea — island by island — until you reach the buried treasure!”*
+
+**Module goal:** Follow the treasure map across the open ocean and **dig up the buried treasure** on the last island (zone 15).
+
+**Map art rule:** Zones 1–14 = one **island or sea area** each on the same voyage route. Zone 15 = **Treasure Island with buried treasure** only (**only** place the dig-up treasure payoff happens on the map). Prelesson islands (shipyard, tribal village, volcano) are **not** repeated on this map.
+
+**Tone rule:** Spooky ship graveyard = playful-spooky (G1). Sea creature and whirlpool = big and dramatic, **not scary**. Ancient ruins = empty lost tribe stones — not the living yurt village from the prelesson.
+
+| Zone | Island / area | What makes it unique |
+|------|---------------|----------------------|
+| 1 | **Palm Sandbar** | Tiny sandy strip with one tall palm and coconuts |
+| 2 | **Shell Beach** | Shore covered in bright shells |
+| 3 | **Glow Jelly Lagoon** | Calm lagoon with soft **glowing jellyfish** in the water |
+| 4 | **Lighthouse Isle** | Striped lighthouse on a rocky point, beam through sea mist |
+| 5 | **Ancient Ruins Island** | Stone temples and carvings from a **lost tribe** — overgrown, empty |
+| 6 | **Parrot Jungle** | Colorful parrots in thick green trees |
+| 7 | **Turtle Rest** | Beach where giant sea turtles sunbathe |
+| 8 | **Waterfall Cliff** | Waterfall pouring off a cliff into the ocean |
+| 9 | **Rainbow Reef** | Coral ring so bright it looks like a rainbow in the water |
+| 10 | **Whirlpool Pass** | Open-water **whirlpool** between rocky pillars — ship sails carefully around the edge |
+| 11 | **Sea Creature Cove** | Friendly giant **sea creature** in shallow water (curious, not attacking) |
+| 12 | **Whale Skeleton Beach** | Huge **whale skeleton** half-buried in the sand |
+| 13 | **Spooky Ship Graveyard** | Foggy **ship graveyard** — broken masts, tilted hulls, tattered sails |
+| 14 | **Double Arch Isle** | Two natural stone arches to sail under — treasure is close |
+| 15 | **Treasure Island** | Sandy island, **X marks the spot**, **buried treasure chest** dug up — finale |
+
+**Finale beat:** Zone 15 is the **buried treasure** — the Module Map reward after the full voyage.
 
 ### 0.8 Dashboard asset sections (`Asset_Lists` columns)
 
