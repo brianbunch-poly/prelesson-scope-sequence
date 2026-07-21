@@ -140,6 +140,7 @@ Exit gate → bg_ending_transition (push on screen)
 - **L3:** Close **pen gates** in the prelesson (not collect signs); Strawbert opened pens; rewards ordered chicken → pig → cow. On the Module Map, Strawbert escapes into town, mixes up signs, and the student fixes them and stops Strawbert at the end.
 - **L4:** Three dials fell off the clock tower; day and night stuck halfway. Prelesson: find sun/moon/star dials → install on clock tower → day/night resume → leave town. Module Map: **15 sky zones** (Dawn → Aurora); one sun (Midday Sun, zone 5), one moon (Crescent Moon, zone 9). Goal: reach the Aurora — end of the day. See §0.9.
 - **L5:** Prelesson: find wheel, propeller, wing for Professor Spark’s flyer. After parts are found, Spark assembles the machine while the student tours his **Invention Museum** (past → present, 14 famous inventions). Zone 15: Spark with the **finished flying invention**. See §0.10.
+- **L6:** Prelesson: find drum, guitar, trumpet so the Sunset Strings can **practice** for tonight’s concert. After practice, the band invites the student to the **Starlight Concert** at the **Sound Garden** — follow the **Sound Trail** (quiet → loud). Zone 15: **Sound Garden stage** (finale concert). See §0.11.
 - **L7:** Ripped sail; repair at shipyard, help tribe build yurt at tribal village, recover treasure map on volcano island; rewards: ship frame section, yurt canvas, treasure map; `tribal_person.webp` map sprite on tribal village.
 - **L8:** Public park picnic; basket at flower garden, picnic fruits at fruit stand, drink cooler at lemonade stand; **picnic pavilion** is the finale exit (not a mission loot zone).
 
@@ -200,6 +201,36 @@ After the prelesson, Professor Spark **thanks** the student, **assembles the fly
 | 15 | **Professor Spark + finished flyer** | Today | Spark reveals the **assembled flying invention** — thank-you and payoff |
 
 **Finale beat:** While the student walked the museum, Professor Spark finished building. Zone 15 is the reveal — not a collage of all 14 exhibits on one tile.
+
+### 0.11 Fly High L6 — Sound Trail (15)
+
+Prelesson: the Sunset Strings are missing drum, guitar, and trumpet — they **cannot practice** for tonight’s concert. After the student finds all three, the band **practices**, thanks the student, and invites them to the **Starlight Concert** at the **Sound Garden**. The Module Map is the **Sound Trail** — one path from the amphitheater through the park, **quietest sounds first, loudest last**. **E-Poly after-class activities** happen at each stop; **nothing is required on the map itself** at each stop beyond advancing to the next zone.
+
+**Handoff (Sunset Strings):** *“Thank you for finding our instruments! We practiced — tonight’s Starlight Concert is at the Sound Garden. Just follow the Sound Trail. We’ll see you at the end!”*
+
+**Module goal:** Follow the Sound Trail from the amphitheater to the Sound Garden and reach the **Starlight Concert** (zone 15).
+
+**Map art rule:** Zones 1–14 = one **Sound Trail** stop each on the same winding path. Zone 15 = **Sound Garden stage + Starlight Concert** only (**only** place the full concert happens on the map).
+
+| Zone | On the trail | Sound |
+|------|--------------|-------|
+| 1 | Clock post at the amphitheater exit | Tick… tick… tick… |
+| 2 | Small fountain at the trail start | Drip, drip, drip |
+| 3 | Park bench with a resting cat | Soft purring |
+| 4 | Gravel section of the path | Crunch, crunch, crunch |
+| 5 | Wind chimes hanging from tree branches | Light tinkling |
+| 6 | Picnic shelter you walk under | Pat, pat, pat on the roof |
+| 7 | Flower beds along the path | Buzz, buzz |
+| 8 | Shady trees overhead filled with birds | Birds singing |
+| 9 | Park road crossing — ice cream truck | Ice cream song |
+| 10 | Bridge over the stream — bell on the bridge | Ring, ring, ring |
+| 11 | Service road — construction workers working with big truck | Beep, beep, beep |
+| 12 | Outdoor court — basketball game | Ball thump, shouts |
+| 13 | Playground next to the path | Kids playing, swings |
+| 14 | Train tracks at the edge of the park | Rumble and horn |
+| 15 | **Sound Garden stage** | **Band playing, crowd cheering — Starlight Concert** |
+
+**Finale beat:** The prelesson concert was **practice**. Zone 15 is tonight’s **Starlight Concert** — the Module Map reward.
 
 ### 0.8 Dashboard asset sections (`Asset_Lists` columns)
 
