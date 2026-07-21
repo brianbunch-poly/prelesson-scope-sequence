@@ -142,7 +142,7 @@ Exit gate → bg_ending_transition (push on screen)
 - **L5:** Prelesson: find wheel, propeller, wing for Professor Spark’s flyer. After parts are found, Spark assembles the machine while the student tours his **Invention Museum** (past → present, 14 famous inventions). Zone 15: Spark with the **finished flying invention**. See §0.10.
 - **L6:** Prelesson: find drum, guitar, trumpet so the Sunset Strings can **practice** for tonight’s concert. After practice, the band invites the student to the **Starlight Concert** at the **Sound Garden** — follow the **Sound Trail** (quiet → loud). Zone 15: **Sound Garden stage** (finale concert). See §0.11.
 - **L7:** Prelesson: repair sail at shipyard, help tribe build yurt, recover treasure map on volcano island. Module Map: **open ocean** — sail island to island following the map. Zone 15: **buried treasure**. See §0.12.
-- **L8:** Public park picnic; basket at flower garden, picnic fruits at fruit stand, drink cooler at lemonade stand; **picnic pavilion** is the finale exit (not a mission loot zone).
+- **L8:** Prelesson: **neighborhood planning picnic** — basket, fruits, cooler at flower garden, fruit stand, lemonade stand; pavilion opens for the meeting. Module Map: **Better Neighborhood Day** — 14 community project stops, then **town square celebration** (zone 15). See §0.13.
 
 ### 0.9 Fly High L4 — Module Map sky zones (15)
 
@@ -263,6 +263,38 @@ Prelesson: repair the ripped sail at **shipyard island**, help the nomads build 
 | 15 | **Treasure Island** | Sandy island, **X marks the spot**, **buried treasure chest** dug up — finale |
 
 **Finale beat:** Zone 15 is the **buried treasure** — the Module Map reward after the full voyage.
+
+### 0.13 Fly High L8 — Better Neighborhood Day (15)
+
+Prelesson: neighbors hold a **planning picnic** at the park — the student picks up the **picnic basket**, **picnic fruits**, and **drink cooler** so the **picnic pavilion** can open for the **neighborhood meeting**. After the meeting, everyone leaves the park for **Better Neighborhood Day**. The Module Map is the **wider neighborhood** — **14 areas** where a community member is working on a **small project** to make the neighborhood better. **E-Poly after-class activities** happen at each stop; **nothing is required on the map itself** at each stop beyond advancing to the next zone.
+
+**Handoff:** *“Great meeting! Now it’s Better Neighborhood Day — visit every neighbor who is working on a project, then meet us in the town square!”*
+
+**Module goal:** Visit every Better Neighborhood Day project across the community and reach the **town square celebration** (zone 15).
+
+**EQ tie-in:** *How can we work together to make our lives better?* — many small projects, many neighbors helping, one better neighborhood.
+
+**Map art rule:** Zones 1–14 = one **neighbor + project** each. Zone 15 = **town square celebration** only (**only** place the full neighborhood gathering finale happens on the map). Prelesson park landmarks (flower garden, fruit stand, lemonade stand, pavilion) are **not** repeated as Module Map project stops.
+
+| Zone | Area | Community member | Small project |
+|------|------|------------------|---------------|
+| 1 | Wall by the bike path | Art teacher + kids | **Paint a community mural** |
+| 2 | Sidewalk tree strip | Gardener + family | **Plant young trees** |
+| 3 | Park corner | Scout troop | **Park cleanup** — litter pick-up |
+| 4 | Recycling drop-off | Volunteer | **Sort recycling** into bins |
+| 5 | Community center steps | Toy drive helper | **Donate toys** — fill the donation box |
+| 6 | Bus stop bench | Carpenter + neighbor | **Repaint an old bench** |
+| 7 | Corner book nook | Librarian | **Stock the little free library** |
+| 8 | Shared garden bed | Garden club | **Weed and water** the community garden |
+| 9 | Alley fence | Teen + grandpa | **Fix and paint** a broken fence picket |
+| 10 | School yard trees | Science teacher | **Hang birdhouses** |
+| 11 | Crosswalk | Crossing guard + kids | **Paint bright crosswalk markers** (with adults) |
+| 12 | Dog park entrance | Pet club | **Set up a waste-bag station** |
+| 13 | Shop street planters | Florist | **Plant flowers** in street planters |
+| 14 | Main street | Teen helpers | **Hang welcome banners** |
+| 15 | **Town square** | **Whole neighborhood** | **Celebration — all neighbors meet together** — finale |
+
+**Finale beat:** Zone 15 is the **town square celebration** — neighbors gather after every project is done. Not another picnic; a **community celebration** of the work.
 
 ### 0.8 Dashboard asset sections (`Asset_Lists` columns)
 
