@@ -144,7 +144,7 @@ From `SAMPLE_APP.md` Sections 2.5, 24, 25:
 
 ### 2.9 Asset categories per lesson (v5 production model)
 
-The Excel plan and `build_asset_manifest()` in `generate_scope_sequence.py` list assets per lesson. **`SAMPLE_APP.md` Section 13** documents the original Lesson 1 template (split popups); **v5 production uses the simplified popup model below** (see also `AGENT_INSTRUCTIONS.md` §0.4).
+The Excel plan and `build_asset_manifest()` in `scripts/generate_scope_sequence.py` list assets per lesson. **`SAMPLE_APP.md` Section 13** documents the original Lesson 1 template (split popups); **v5 production uses the simplified popup model below** (see also `AGENT_INSTRUCTIONS.md` §0.4).
 
 **Core map & game**
 - `bg_main.webp`, `bg_overlay.webp`

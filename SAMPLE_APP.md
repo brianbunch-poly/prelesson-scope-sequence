@@ -13,7 +13,7 @@
 
 ## v5 Production Asset Model (scope-and-sequence lessons)
 
-> **For agents rebuilding lessons from `AGENT_INSTRUCTIONS.md` / `generate_scope_sequence.py`:** The **deployed asset plan** no longer uses the split popup files documented below for Lesson 1. Use this model instead when creating art for any new lesson.
+> **For agents rebuilding lessons from `AGENT_INSTRUCTIONS.md` / `scripts/generate_scope_sequence.py`:** The **deployed asset plan** no longer uses the split popup files documented below for Lesson 1. Use this model instead when creating art for any new lesson.
 
 | Moment | v5 asset | Folder | Notes |
 |--------|----------|--------|-------|
@@ -32,7 +32,7 @@
 
 **In-game popup flow is unchanged:** still 2 text steps (`quest1` / `quest2` copy) before the intro video; only the **art pipeline** is simplified to one `pregame_popup` image (engine may still advance two text steps over the same art or use two states — implement per build).
 
-**Lesson 1 v5 narrative:** Collect **ant token**, **bee token**, **butterfly token** at ant hill / beehive / butterfly area (not ant crumbs / honey jar / flower cup). See `lesson_designs.py` → `FH_U1_L1`.
+**Lesson 1 v5 narrative:** Collect **ant token**, **bee token**, **butterfly token** at ant hill / beehive / butterfly area (not ant crumbs / honey jar / flower cup). See `scripts/lesson_designs.py` → `FH_U1_L1`.
 
 Sections below retain the **original Lesson 1 template** file names for engine reference.
 

@@ -29,23 +29,24 @@ Checkbox state is keyed by asset path (e.g. `quest/player_vehicle.webp`, `quest/
 
 ## Regenerating lesson content (local)
 
-Python sources (`lesson_designs.py`, `generate_scope_sequence.py`, etc.) are **gitignored** but required locally.
+Local maintenance lives in **`scripts/`** (Python toolchain) and **`data/`** (xlsx workbook + Korean cache). Both are gitignored.
 
-After editing `lesson_designs.py` or `emerge_lesson_designs.py`:
-
-```bash
-python apply_quest_updates.py   # quest narratives, mission labels, landmarks, agent copy → public/index.html
-python sync_asset_lists.py      # asset manifests → public/index.html
-```
-
-Optional Excel / local HTML path:
+After editing `scripts/lesson_designs.py` or `scripts/emerge_lesson_designs.py`:
 
 ```bash
-python generate_scope_sequence.py
-python generate_dashboard.py      # → prelesson_scope_sequence.html from xlsx
+python scripts/apply_quest_updates.py   # quest narratives, mission labels, landmarks, agent copy → public/index.html
+python scripts/sync_asset_lists.py      # asset manifests → public/index.html
+python scripts/build_korean_cache.py    # translate missing EN → data/korean_content_cache.json
+python scripts/apply_quest_updates.py   # merge Korean into public/index.html
 ```
 
-Commit and push `public/index.html` to deploy dashboard changes.
+Optional Excel regenerate:
+
+```bash
+python scripts/generate_scope_sequence.py   # → data/Prelesson_Game_Scope_Sequence_v5.xlsx
+```
+
+Preview locally with Live Server on `public/index.html`. Commit and push `public/index.html` to deploy.
 
 ## Key v5 conventions (summary)
 

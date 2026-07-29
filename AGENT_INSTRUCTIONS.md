@@ -1,7 +1,7 @@
 # Agent Instructions — Prelesson Game Narrative Redesign
 
 > **Audience:** Future Cursor agents working on this project.
-> **Primary deliverable:** Keep lesson designs, the Excel workbook, and the **deployed dashboard** (`public/index.html`) in sync — **English and Korean** (§0.14). Edit `lesson_designs.py` / `emerge_lesson_designs.py` first, then regenerate content with the Python scripts below.
+> **Primary deliverable:** Keep lesson designs, the Excel workbook, and the **deployed dashboard** (`public/index.html`) in sync — **English and Korean** (§0.14). Edit `scripts/lesson_designs.py` / `scripts/emerge_lesson_designs.py` first, then regenerate content with the Python scripts in `scripts/`.
 
 ---
 
@@ -14,21 +14,20 @@ These rules reflect the **live** scope-and-sequence dashboard and the asset mode
 | File | Role |
 |------|------|
 | `public/index.html` | **Deployed** scope-and-sequence dashboard (Cloudflare Workers + KV). Git tracks this file. |
-| `lesson_designs.py` | Narrative designs for Wonders lessons (local; gitignored). |
-| `emerge_lesson_designs.py` | Narrative designs for Emerge lessons (local; gitignored). |
-| `generate_scope_sequence.py` | Regenerates Wonders rows + asset manifest into xlsx. |
-| `apply_quest_updates.py` | Syncs quest narratives, mission labels, landmarks, and agent copy into `public/index.html`. |
-| `sync_asset_lists.py` | Rebuilds `Asset_Lists` in `public/index.html` from `build_asset_manifest()`. |
-| `build_korean_cache.py` | Translates new/missing dashboard English strings → `korean_content_cache.json`. |
-| `korean_i18n.py` | Shared list of translatable dashboard fields + cache merge helpers. |
-| `generate_dashboard.py` | Regenerates standalone `prelesson_scope_sequence.html` from xlsx (optional local review). |
+| `scripts/lesson_designs.py` | Narrative designs for Wonders lessons (local; gitignored). |
+| `scripts/emerge_lesson_designs.py` | Narrative designs for Emerge lessons (local; gitignored). |
+| `scripts/generate_scope_sequence.py` | Regenerates Wonders rows + asset manifest into xlsx. |
+| `scripts/apply_quest_updates.py` | Syncs quest narratives, mission labels, landmarks, and agent copy into `public/index.html`. |
+| `scripts/sync_asset_lists.py` | Rebuilds `Asset_Lists` in `public/index.html` from `build_asset_manifest()`. |
+| `scripts/build_korean_cache.py` | Translates new/missing dashboard English strings → `data/korean_content_cache.json`. |
+| `scripts/korean_i18n.py` | Shared list of translatable dashboard fields + cache merge helpers. |
 
 **Typical sync after design edits:**
 ```bash
-python apply_quest_updates.py
-python sync_asset_lists.py
-python build_korean_cache.py
-python apply_quest_updates.py
+python scripts/apply_quest_updates.py
+python scripts/sync_asset_lists.py
+python scripts/build_korean_cache.py
+python scripts/apply_quest_updates.py
 ```
 Then commit `public/index.html` if deploying.
 
@@ -40,7 +39,7 @@ Then commit `public/index.html` if deploying.
 
 The dashboard **Quest Details** field (`Purpose_And_Goals`) is **story-only**. Mini-games are not part of the narrative except as parenthetical activity labels.
 
-**Structure (built by `expand_quest_problem()` in `lesson_designs.py`):**
+**Structure (built by `expand_quest_problem()` in `scripts/lesson_designs.py`):**
 1. **Opening hook** — `problem` field (what is wrong / what is needed).
 2. **Three mission beats** — why the player visits each map area and what they collect or do there.
 3. **Activity tag in parentheses only** — `(Find It!)`, `(Reading Challenge)`, or `(Words I Know)`.
@@ -93,7 +92,7 @@ Set `m1_landmark`, `m2_landmark`, `m3_landmark` in the design dict. `m1_zone` is
 | `pregame_popup_audio.mp3` | Pre-game popup sting (replaces `[character]_intro.mp3`) |
 | `postgame_popup_audio.mp3` | Post-game popup sting (replaces `[character]_ending.mp3`) |
 
-Defined in `build_asset_manifest()` in `generate_scope_sequence.py`.
+Defined in `build_asset_manifest()` in `scripts/generate_scope_sequence.py`.
 
 ### 0.5 Ending scene flow & assets
 
@@ -116,7 +115,7 @@ Exit gate → bg_ending_transition (push on screen)
 5. **`bg_ending_1.webp` … `bg_ending_N.webp`** (`ending/`) — Sequential overlays on top of `bg_ending_main`. Each image is the same Module Map with **one more module covered** by a lesson-themed layer (leaves, clouds, snow, etc.). Played in order until every module is hidden — visual metaphor that the map awaits the student in class.
 6. **`ending_song.mp3`** — Music during the cover-up sequence.
 
-**Overlay count (`N`):** from `slideshow_count()` in `generate_scope_sequence.py` — **16** for GT1/GT2, **14** for GT3/MGT.
+**Overlay count (`N`):** from `slideshow_count()` in `scripts/generate_scope_sequence.py` — **16** for GT1/GT2, **14** for GT3/MGT.
 
 | Asset | Folder | Purpose |
 |-------|--------|---------|
@@ -326,32 +325,32 @@ All fields that pass through `trField()` / `trText()` in the dashboard, includin
 
 Static UI chrome (sidebar labels, button text) uses `UI_I18N` — separate from `ko_strings`.
 
-Field list source of truth: `TRANSLATE_FIELDS` in `korean_i18n.py`.
+Field list source of truth: `TRANSLATE_FIELDS` in `scripts/korean_i18n.py`.
 
 #### Required workflow after English text edits
 
-1. Edit English in `lesson_designs.py` / `emerge_lesson_designs.py` (preferred) or regenerate xlsx.
+1. Edit English in `scripts/lesson_designs.py` / `scripts/emerge_lesson_designs.py` (preferred) or regenerate xlsx.
 2. Sync English into the dashboard:
    ```bash
-   python apply_quest_updates.py
-   python sync_asset_lists.py   # if assets changed
+   python scripts/apply_quest_updates.py
+   python scripts/sync_asset_lists.py   # if assets changed
    ```
 3. **Translate any new or changed strings:**
    ```bash
-   python build_korean_cache.py
+   python scripts/build_korean_cache.py
    ```
-   Reads strings from `public/index.html` + xlsx, calls Google Translate for missing entries, writes `korean_content_cache.json`.
+   Reads strings from `public/index.html` + xlsx, calls Google Translate for missing entries, writes `data/korean_content_cache.json`.
 4. **Merge Korean into the deployed dashboard:**
    ```bash
-   python apply_quest_updates.py
+   python scripts/apply_quest_updates.py
    ```
-   `apply_quest_updates.py` merges `korean_content_cache.json` → `ko_strings` in `public/index.html`.
+   `scripts/apply_quest_updates.py` merges `data/korean_content_cache.json` → `ko_strings` in `public/index.html`.
 
 Steps 3–4 are **mandatory** whenever Quest Details, Quest Flow, agent lines, mission copy, or any other translatable field changes.
 
 #### Do not
 
-- Hand-edit `ko_strings` inside `public/index.html` without updating `korean_content_cache.json` (it will be overwritten on next sync).
+- Hand-edit `ko_strings` inside `public/index.html` without updating `data/korean_content_cache.json` (it will be overwritten on next sync).
 - Ship English-only dashboard text and assume the user will translate later.
 - Skip Korean when editing narrative fields listed above.
 
@@ -361,7 +360,7 @@ Only skip steps 3–4 when the user **explicitly** requests English-only changes
 
 #### Verification
 
-After syncing, confirm new English strings exist in `korean_content_cache.json` and that KOR mode shows Korean for **Quest Details** and **Quest Flow** on the edited lesson(s).
+After syncing, confirm new English strings exist in `data/korean_content_cache.json` and that KOR mode shows Korean for **Quest Details** and **Quest Flow** on the edited lesson(s).
 
 ### 0.8 Dashboard asset sections (`Asset_Lists` columns)
 
@@ -445,34 +444,34 @@ Improve **all prelesson game narratives** so they are:
 
 | File | Role |
 |------|------|
-| `Prelesson_Game_Scope_Sequence_v5.xlsx` | Workbook the user reviews (edit this; keep tabs in sync) |
-| `lesson_designs.py` | Narrative designs for Wonders / Fly High / All Aboard / Set Sail / Into the Horizon lessons |
-| `emerge_lesson_designs.py` | Narrative designs for Emerge (S1 / MAG) lessons |
-| `generate_scope_sequence.py` | Regenerates Wonders rows into the xlsx + `build_asset_manifest()` |
-| `apply_quest_updates.py` | Syncs narratives / mission labels / landmarks → `public/index.html`; merges Korean cache → `ko_strings` |
-| `sync_asset_lists.py` | Syncs asset lists from manifest → `public/index.html` |
-| `build_korean_cache.py` | Translates missing EN dashboard strings → `korean_content_cache.json` (**required after text edits**; §0.14) |
-| `update_emerge_rows.py` / `append_emerge_rows.py` | Refresh Emerge rows in the xlsx |
+| `data/Prelesson_Game_Scope_Sequence_v5.xlsx` | Workbook the user reviews (edit this; keep tabs in sync) |
+| `scripts/lesson_designs.py` | Narrative designs for Wonders / Fly High / All Aboard / Set Sail / Into the Horizon lessons |
+| `scripts/emerge_lesson_designs.py` | Narrative designs for Emerge (S1 / MAG) lessons |
+| `scripts/generate_scope_sequence.py` | Regenerates Wonders rows into the xlsx + `build_asset_manifest()` |
+| `scripts/apply_quest_updates.py` | Syncs narratives / mission labels / landmarks → `public/index.html`; merges Korean cache → `ko_strings` |
+| `scripts/sync_asset_lists.py` | Syncs asset lists from manifest → `public/index.html` |
+| `scripts/build_korean_cache.py` | Translates missing EN dashboard strings → `data/korean_content_cache.json` (**required after text edits**; §0.14) |
+| `scripts/update_emerge_rows.py` / `scripts/append_emerge_rows.py` | Refresh Emerge rows in the xlsx |
 | `wonders_lessons.md` / `emerge_lessons.md` | Curriculum context (EQ, stories, vocab) |
 | `SAMPLE_APP.md` | Engine/template reference |
 | `SUMMARY.md` | Original planning brief (structure still applies) |
 
 ### Do not invent a second story
 
-- Prefer editing designs → run `apply_quest_updates.py` + `sync_asset_lists.py` + **`build_korean_cache.py`** + **`apply_quest_updates.py`** (merge KO) → commit `public/index.html` for deploy (§0.14)
-- Or: designs → regenerate Excel → `generate_dashboard.py` for local `prelesson_scope_sequence.html` review
-- Do not hand-edit narrative JSON inside `public/index.html` without updating `lesson_designs.py` first
+- Prefer editing designs → run `scripts/apply_quest_updates.py` + `scripts/sync_asset_lists.py` + **`scripts/build_korean_cache.py`** + **`scripts/apply_quest_updates.py`** (merge KO) → commit `public/index.html` for deploy (§0.14)
+- Preview with Live Server on `public/index.html`
+- Do not hand-edit narrative JSON inside `public/index.html` without updating `scripts/lesson_designs.py` first
 
 ### Workflow for this phase
 
 1. Read curriculum context (topic, EQ, story summaries) for each lesson.
-2. Redesign narrative fields in `lesson_designs.py` / `emerge_lesson_designs.py` (preferred), **or** edit the xlsx directly if regenerating is not possible — but keep all related columns/tabs consistent.
-3. Regenerate / update `Prelesson_Game_Scope_Sequence_v5.xlsx` with:
-   - `python generate_scope_sequence.py` (48 Wonders rows)
-   - `python append_emerge_rows.py` (24 Emerge rows; use `update_emerge_rows.py` only when Emerge rows already exist and you are refreshing in place)
+2. Redesign narrative fields in `scripts/lesson_designs.py` / `scripts/emerge_lesson_designs.py` (preferred), **or** edit the xlsx directly if regenerating is not possible — but keep all related columns/tabs consistent.
+3. Regenerate / update `data/Prelesson_Game_Scope_Sequence_v5.xlsx` with:
+   - `python scripts/generate_scope_sequence.py` (48 Wonders rows)
+   - `python scripts/append_emerge_rows.py` (24 Emerge rows; use `scripts/update_emerge_rows.py` only when Emerge rows already exist and you are refreshing in place)
 4. After regenerate, clear **Game_Overview** review fills to white if the user wants a clean overview tab (do **not** change narrative text there unless asked).
 5. Present changes for user review and iterate.
-6. After Excel approval (or when asked): run `python apply_quest_updates.py`, `python sync_asset_lists.py`, **`python build_korean_cache.py`**, then **`python apply_quest_updates.py` again** to merge Korean, then commit `public/index.html` for Cloudflare deploy. Optionally run `python generate_dashboard.py` for local xlsx-based HTML.
+6. After Excel approval (or when asked): run `python scripts/apply_quest_updates.py`, `python scripts/sync_asset_lists.py`, **`python scripts/build_korean_cache.py`**, then **`python scripts/apply_quest_updates.py` again** to merge Korean, then commit `public/index.html` for Cloudflare deploy. Preview with Live Server on `public/index.html`.
 
 ### Cross-tab sync rule (required)
 
@@ -522,7 +521,7 @@ Every lesson needs:
 Each mission reward must answer: **“Why does the main goal need this?”**  
 If the answer is only “to fill a HUD slot,” redesign it.
 
-**Uniqueness rule:** Mission reward items must **not repeat** across lessons (case-insensitive). Before finalizing a reward name, check all other `reward_desc` values in `lesson_designs.py` and `emerge_lesson_designs.py`.
+**Uniqueness rule:** Mission reward items must **not repeat** across lessons (case-insensitive). Before finalizing a reward name, check all other `reward_desc` values in `scripts/lesson_designs.py` and `scripts/emerge_lesson_designs.py`.
 
 **Variety within a lesson:** The three rewards/actions should feel different from each other (not “left bolt / middle bolt / right bolt”). Prefer three distinct objects or three distinct jobs.
 
@@ -632,20 +631,20 @@ When `Purpose_And_Goals` (or underlying design fields) change, sync related cont
 | `Video_Information` | Video connection lines that mention rewards/quest |
 | `Mission_*_Details` | Only if zone names or mission framing must match new narrative |
 | `Dev_Details` | Notes if complexity/story approach changed |
-| **`ko_strings` (dashboard)** | **Korean translations for all changed fields above** — run `build_korean_cache.py` then re-run `apply_quest_updates.py` (§0.14) |
+| **`ko_strings` (dashboard)** | **Korean translations for all changed fields above** — run `scripts/build_korean_cache.py` then re-run `scripts/apply_quest_updates.py` (§0.14) |
 
 ### Preferred regeneration path
 
-1. Edit `lesson_designs.py` / `emerge_lesson_designs.py`
+1. Edit `scripts/lesson_designs.py` / `scripts/emerge_lesson_designs.py`
 2. Snapshot the current xlsx cell values (for yellow highlighting)
-3. Run `python generate_scope_sequence.py` (Wonders rows)
-4. Run `python append_emerge_rows.py` or `python update_emerge_rows.py` (Emerge rows)
+3. Run `python scripts/generate_scope_sequence.py` (Wonders rows)
+4. Run `python scripts/append_emerge_rows.py` or `python scripts/update_emerge_rows.py` (Emerge rows)
 5. **Yellow-highlight every cell whose value changed** (`FFFF00` fill). Do **not** recolor unchanged cells.
 6. Spot-check `Game_Overview`, `Agent_Details`, `Asset_Lists`, `Antagonist`
 
 ### Change-highlight rule (user review aid)
 
-Whenever you edit `Prelesson_Game_Scope_Sequence_v5.xlsx`:
+Whenever you edit `data/Prelesson_Game_Scope_Sequence_v5.xlsx`:
 1. Compare old vs new cell values after regeneration / in-place update
 2. Apply a review fill **only** to cells that actually changed in that pass
 3. Leave all other cells’ formatting alone (do not clear earlier review colors)
@@ -676,7 +675,7 @@ For every curriculum key, define:
 - [ ] `quest1` / `quest2` — 2-step pre-game popup copy (`Headline: … | PolyPal: …`)
 - [ ] Agent lines — mention real rewards/actions; align with Quest Details story
 - [ ] `Purpose_And_Goals` — expanded quest narrative (§0.2); includes Module Map unlock + payoff
-- [ ] **Korean translations** — `build_korean_cache.py` + re-run `apply_quest_updates.py`; KOR mode shows Korean for changed fields (§0.14)
+- [ ] **Korean translations** — `scripts/build_korean_cache.py` + re-run `scripts/apply_quest_updates.py`; KOR mode shows Korean for changed fields (§0.14)
 
 ### Quality bar questions
 
@@ -717,10 +716,10 @@ For every curriculum key, define:
 
 When finishing a narrative pass:
 
-1. Update designs + run `apply_quest_updates.py` + `sync_asset_lists.py` + **`build_korean_cache.py`** + **`apply_quest_updates.py`** (merge KO) (or regenerate xlsx and highlight changes). See §0.14.
+1. Update designs + run `scripts/apply_quest_updates.py` + `scripts/sync_asset_lists.py` + **`scripts/build_korean_cache.py`** + **`scripts/apply_quest_updates.py`** (merge KO) (or regenerate xlsx and highlight changes). See §0.14.
 2. Yellow-highlight only changed cells when doing Excel review passes.
 3. Confirm no duplicate mission rewards across the workbook.
-4. Commit `public/index.html` when deploying; optionally run `generate_dashboard.py` for local xlsx HTML.
+4. Commit `public/index.html` when deploying; preview with Live Server on `public/index.html`.
 5. Confirm Emerge `Purpose_And_Goals` / `module_goal` lines are concrete events.
 6. Summarize for the user:
    - How many lessons changed
