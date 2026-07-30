@@ -1,4 +1,4 @@
-# Agent Instructions — Prelesson Game Narrative Redesign
+﻿# Agent Instructions — Prelesson Game Narrative Redesign
 
 > **Audience:** Future Cursor agents working on this project.
 > **Primary deliverable:** Keep lesson designs, the Excel workbook, and the **deployed dashboard** (`public/index.html`) in sync — **English and Korean** (§0.14). Edit `scripts/lesson_designs.py` / `scripts/emerge_lesson_designs.py` first, then regenerate content with the Python scripts in `scripts/`.
@@ -444,7 +444,7 @@ Improve **all prelesson game narratives** so they are:
 
 | File | Role |
 |------|------|
-| `data/Prelesson_Game_Scope_Sequence_v5.xlsx` | Workbook the user reviews (edit this; keep tabs in sync) |
+| `data/Prelesson_Game_Scope_Sequence_v6.xlsx` | Workbook the user reviews (edit this; keep tabs in sync) |
 | `scripts/lesson_designs.py` | Narrative designs for Wonders / Fly High / All Aboard / Set Sail / Into the Horizon lessons |
 | `scripts/emerge_lesson_designs.py` | Narrative designs for Emerge (S1 / MAG) lessons |
 | `scripts/generate_scope_sequence.py` | Regenerates Wonders rows into the xlsx + `build_asset_manifest()` |
@@ -466,7 +466,7 @@ Improve **all prelesson game narratives** so they are:
 
 1. Read curriculum context (topic, EQ, story summaries) for each lesson.
 2. Redesign narrative fields in `scripts/lesson_designs.py` / `scripts/emerge_lesson_designs.py` (preferred), **or** edit the xlsx directly if regenerating is not possible — but keep all related columns/tabs consistent.
-3. Regenerate / update `data/Prelesson_Game_Scope_Sequence_v5.xlsx` with:
+3. Regenerate / update `data/Prelesson_Game_Scope_Sequence_v6.xlsx` with:
    - `python scripts/generate_scope_sequence.py` (48 Wonders rows)
    - `python scripts/append_emerge_rows.py` (24 Emerge rows; use `scripts/update_emerge_rows.py` only when Emerge rows already exist and you are refreshing in place)
 4. After regenerate, clear **Game_Overview** review fills to white if the user wants a clean overview tab (do **not** change narrative text there unless asked).
@@ -644,7 +644,7 @@ When `Purpose_And_Goals` (or underlying design fields) change, sync related cont
 
 ### Change-highlight rule (user review aid)
 
-Whenever you edit `data/Prelesson_Game_Scope_Sequence_v5.xlsx`:
+Whenever you edit `data/Prelesson_Game_Scope_Sequence_v6.xlsx`:
 1. Compare old vs new cell values after regeneration / in-place update
 2. Apply a review fill **only** to cells that actually changed in that pass
 3. Leave all other cells’ formatting alone (do not clear earlier review colors)

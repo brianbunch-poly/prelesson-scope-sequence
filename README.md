@@ -1,4 +1,4 @@
-# Prelesson Game Scope & Sequence
+﻿# Prelesson Game Scope & Sequence
 
 Static dashboard with shared asset checklist progress via Cloudflare Workers + KV.
 
@@ -43,7 +43,7 @@ python scripts/apply_quest_updates.py   # merge Korean into public/index.html
 Optional Excel regenerate:
 
 ```bash
-python scripts/generate_scope_sequence.py   # → data/Prelesson_Game_Scope_Sequence_v5.xlsx
+python scripts/generate_scope_sequence.py   # → data/Prelesson_Game_Scope_Sequence_v6.xlsx
 ```
 
 Preview locally with Live Server on `public/index.html`. Commit and push `public/index.html` to deploy.
