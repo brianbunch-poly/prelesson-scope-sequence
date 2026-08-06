@@ -207,25 +207,48 @@ The Excel plan and `build_asset_manifest()` in `scripts/generate_scope_sequence.
 - **Context:** At-home prelesson on online platform → in-class lesson at Poly School
 - **Textbooks extracted in `wonders_lessons.md`:** McGraw-Hill Fly High (G1), All Aboard (G2), Set Sail (G2), Into the Horizon (G3)
 
-### 3.2 Level codes (11 levels)
+### 3.2 Level codes (reading-order grade blocks)
 
-| Level | Approx. grade | Textbook units covered | Lesson count |
-|-------|---------------|------------------------|--------------|
-| **GT1-1** | 1st grade | Fly High Units 1–2, Lessons 1–8 | 8 |
-| **GT1-2** | 1st grade | Fly High Unit 3 (L9–12) + All Aboard Unit 1 (L1–4) | 12 |
-| **MGT1-1** | 1st grade (modified) | Same content as GT1-2 | 12 |
-| **GT2-1** | 2nd grade | All Aboard Units 2–3, Lessons 5–12 | 8 |
-| **MGT1-2** | 1st grade modified / bridge | Same content as GT2-1 | 8 |
-| **GT2-2** | 2nd grade | Set Sail Units 1–2, Lessons 1–8 | 8 |
-| **MGT2-1** | 2nd grade (modified) | Same content as GT2-2 | 8 |
-| **GT3-1** | 3rd grade | Set Sail Unit 3 (L9–12) + Into the Horizon Unit 1 (L1–4) | 12 |
-| **MGT2-2** | 2nd grade modified / bridge | Same content as GT3-1 | 12 |
-| **GT3-2** | 3rd grade | Into the Horizon Units 2–3, Lessons 5–12 | 8 |
-| **MGT3-1** | 3rd grade (modified) | Same content as GT3-2 | 8 |
+Organization is by **grade–semester reading order**, not raw textbook unit order. Source of truth for order/titles: `wonders_lessons.md`, `emerge_lessons.md`, `story_texts.xlsx`.
 
-**Total Excel rows: 104** (one row per level × lesson instance).
+**Wonders (GT / MGT) — 48 unique games, dual-tagged shared rows:**
 
-> **Shared content rule (GT / MGT pairs):** When two levels share the same lesson text (e.g. GT1-2 and MGT1-1 both use "Lesson 9: My Helpers"), the **prelesson game plan must be identical** — same narrative, missions, PolyPal copy, assets, and difficulty. Do **not** scaffold or simplify MGT rows differently from their GT partner. The Excel still needs **separate rows** per level (104 total), but MGT rows should duplicate the GT partner's plan. Use `Depends_On_Row` on the MGT row to point at the GT row it mirrors (e.g. `MGT1-1_L09` → `GT1-2_L09`).
+| Block | Lessons | Textbook span |
+|-------|---------|---------------|
+| **GT1-1** | L1–8 | Fly High U1–U2 |
+| **GT1-2 / MGT1-1** | L1–8 | Fly High U3 + All Aboard U1 |
+| **GT2-1 / MGT1-2** | L1–8 | All Aboard U2–U3 |
+| **GT2-2 / MGT2-1** | L1–8 | Set Sail U1–U2 |
+| **GT3-1 / MGT2-2** | L1–8 | Set Sail U3 + Into the Horizon U1 |
+| **GT3-2 / MGT3-1** | L1–8 | Into the Horizon U2–U3 |
+
+**Emerge (S / MAG) — 48 slots, dual-tagged where listed:**
+
+| Block | Lessons |
+|-------|---------|
+| **S1-1** | L1–6 |
+| **S1-2** | L7–12 |
+| **S2-1 / MAG1-1** | L1–6 |
+| **S2-2 / MAG1-2** | L7–12 |
+| **S3-1 / MAG2-1** | L1–6 |
+| **S3-2 / MAG2-2** | L7–12 |
+| **MAG3-1** | L1–6 |
+| **MAG3-2** | L7–12 |
+
+**Semester dropdown mapping:**
+
+| Semester | Levels |
+|----------|--------|
+| 2028-1 | GT1-1, MGT1-1, S1-1, MAG1-1 |
+| 2028-2 | GT1-2, MGT1-2, S1-2, MAG1-2 |
+| 2029-1 | GT2-1, MGT2-1, S2-1, MAG2-1 |
+| 2029-2 | GT2-2, MGT2-2, S2-2, MAG2-2 |
+| 2030-1 | GT3-1, MGT3-1, S3-1, MAG3-1 |
+| 2030-2 | GT3-2, MGT3-2, S3-2, MAG3-2 |
+
+**Total unique Excel / website game rows: 96** (48 Wonders + 48 Emerge). Dual-tagged partners share one row (`GT1-2_L01 / MGT1-1_L01`, `S2-1_L01 / MAG1-1_L01`). `MGT3-2` is listed in 2030-2 but has no content yet (Coming soon).
+
+> **Shared content rule:** When two levels share a dual-tagged block, the **prelesson game plan is identical**. The MAG (or MGT) partner usually appears in the earlier semester; the later S (or GT) partner shows the same games as a repeat.
 
 ### 3.3 Lesson inventory (48 unique curriculum lessons)
 
@@ -294,16 +317,9 @@ Create one `.xlsx` file named:
 Prelesson_Game_Scope_Sequence.xlsx
 ```
 
-**Recommended sheets:**
+**Current workbook:** `Prelesson_Game_Scope_Sequence_v7.xlsx` — **96 unique game rows** (48 Wonders + 48 Emerge), dual-tagged IDs where partners share a plan.
 
-| Sheet name | Contents |
-|------------|----------|
-| `Master_Plan` | All 104 rows — primary working sheet |
-| `GT_Levels` | Filtered view: GT1-1 through GT3-2 |
-| `MGT_Levels` | Filtered view: MGT1-1 through MGT3-1 |
-| `Asset_Summary` | Pivot/count of unique assets across all lessons |
-| `Shared_Lessons` | GT/MGT pairs that share identical game plans — verify MGT row matches GT partner |
-| `README` | Column definitions, workflow, quality checklist |
+**Sheets in use:** `Lesson_Details`, `Game_Overview`, `Video_Information`, `Mission_1/2/3_Details`, `Agent_Details`, `Asset_Lists`, `Dev_Details`, `README`.
 
 Alternatively, a single `Master_Plan` sheet with filters is acceptable if all 104 rows are present.
 

@@ -468,7 +468,7 @@ Improve **all prelesson game narratives** so they are:
 2. Redesign narrative fields in `scripts/lesson_designs.py` / `scripts/emerge_lesson_designs.py` (preferred), **or** edit the xlsx directly if regenerating is not possible — but keep all related columns/tabs consistent.
 3. Regenerate / update `data/Prelesson_Game_Scope_Sequence_v7.xlsx` with:
    - `python scripts/generate_scope_sequence.py` (48 Wonders rows)
-   - `python scripts/append_emerge_rows.py` (24 Emerge rows; use `scripts/update_emerge_rows.py` only when Emerge rows already exist and you are refreshing in place)
+   - Prefer `python scripts/reorg_reading_order.py` to rebuild Emerge (48 reading-order slots) + sync Excel from `public/index.html`. Legacy `append_emerge_rows.py` / `update_emerge_rows.py` expect older 24-row layouts.
 4. After regenerate, clear **Game_Overview** review fills to white if the user wants a clean overview tab (do **not** change narrative text there unless asked).
 5. Present changes for user review and iterate.
 6. After Excel approval (or when asked): run `python scripts/apply_quest_updates.py`, `python scripts/sync_asset_lists.py`, **`python scripts/build_korean_cache.py`**, then **`python scripts/apply_quest_updates.py` again** to merge Korean, then commit `public/index.html` for Cloudflare deploy. Preview with Live Server on `public/index.html`.
