@@ -444,7 +444,7 @@ Improve **all prelesson game narratives** so they are:
 
 | File | Role |
 |------|------|
-| `data/Prelesson_Game_Scope_Sequence_v7.xlsx` | Workbook the user reviews (edit this; keep tabs in sync) |
+| `data/Prelesson_Game_Scope_Sequence_v8.xlsx` | Workbook the user reviews (edit this; keep tabs in sync) |
 | `scripts/lesson_designs.py` | Narrative designs for Wonders / Fly High / All Aboard / Set Sail / Into the Horizon lessons |
 | `scripts/emerge_lesson_designs.py` | Narrative designs for Emerge (S1 / MAG) lessons |
 | `scripts/generate_scope_sequence.py` | Regenerates Wonders rows into the xlsx + `build_asset_manifest()` |
@@ -466,7 +466,7 @@ Improve **all prelesson game narratives** so they are:
 
 1. Read curriculum context (topic, EQ, story summaries) for each lesson.
 2. Redesign narrative fields in `scripts/lesson_designs.py` / `scripts/emerge_lesson_designs.py` (preferred), **or** edit the xlsx directly if regenerating is not possible — but keep all related columns/tabs consistent.
-3. Regenerate / update `data/Prelesson_Game_Scope_Sequence_v7.xlsx` with:
+3. Regenerate / update `data/Prelesson_Game_Scope_Sequence_v8.xlsx` with:
    - `python scripts/generate_scope_sequence.py` (48 Wonders rows)
    - Prefer `python scripts/reorg_reading_order.py` to rebuild Emerge (48 reading-order slots) + sync Excel from `public/index.html`. Legacy `append_emerge_rows.py` / `update_emerge_rows.py` expect older 24-row layouts.
 4. After regenerate, clear **Game_Overview** review fills to white if the user wants a clean overview tab (do **not** change narrative text there unless asked).
@@ -644,7 +644,7 @@ When `Purpose_And_Goals` (or underlying design fields) change, sync related cont
 
 ### Change-highlight rule (user review aid)
 
-Whenever you edit `data/Prelesson_Game_Scope_Sequence_v7.xlsx`:
+Whenever you edit `data/Prelesson_Game_Scope_Sequence_v8.xlsx`:
 1. Compare old vs new cell values after regeneration / in-place update
 2. Apply a review fill **only** to cells that actually changed in that pass
 3. Leave all other cells’ formatting alone (do not clear earlier review colors)

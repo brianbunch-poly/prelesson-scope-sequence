@@ -317,7 +317,7 @@ Create one `.xlsx` file named:
 Prelesson_Game_Scope_Sequence.xlsx
 ```
 
-**Current workbook:** `Prelesson_Game_Scope_Sequence_v7.xlsx` — **96 unique game rows** (48 Wonders + 48 Emerge), dual-tagged IDs where partners share a plan.
+**Current workbook:** `Prelesson_Game_Scope_Sequence_v8.xlsx` — **96 unique game rows** (48 Wonders + 48 Emerge), dual-tagged IDs where partners share a plan.
 
 **Sheets in use:** `Lesson_Details`, `Game_Overview`, `Video_Information`, `Mission_1/2/3_Details`, `Agent_Details`, `Asset_Lists`, `Dev_Details`, `README`.
 
