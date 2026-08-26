@@ -31,7 +31,7 @@ Checkbox state is keyed by asset path (e.g. `quest/player_vehicle.webp`, `quest/
 
 Local maintenance lives in **`scripts/`** (Python toolchain) and **`data/`** (xlsx workbook + Korean cache). Both are gitignored.
 
-After editing `scripts/lesson_designs.py` or `scripts/emerge_lesson_designs.py`:
+After editing `scripts/lesson_designs.py`:
 
 ```bash
 python scripts/apply_quest_updates.py   # quest narratives, mission labels, landmarks, agent copy → public/index.html

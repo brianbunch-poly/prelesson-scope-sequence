@@ -2,7 +2,7 @@
 
 > **v5 update:** See `AGENT_INSTRUCTIONS.md` §0 for current quest narrative format, popup assets (`pregame_popup` / `postgame_popup`), mission labels, and regeneration workflow. Section 2.9 below reflects the v5 asset model.
 
-> **Purpose of this document:** Tell a future agent exactly how to read the curriculum, understand the sample game, and produce a complete Excel scope-and-sequence file with detailed prelesson-app plans for **every lesson at every level**.
+> **Purpose of this document:** Tell a future agent exactly how to read the curriculum, understand the sample game, and produce a complete Excel scope-and-sequence file with detailed prelesson-app plans for **every GT / MGT lesson**. **S and MAG (Emerge) are out of scope** — no Prelesson Games for those levels.
 
 > **This is preparation only.** No games are built from this file. This file is the instruction set for the Excel-planning agent.
 
@@ -209,7 +209,9 @@ The Excel plan and `build_asset_manifest()` in `scripts/generate_scope_sequence.
 
 ### 3.2 Level codes (reading-order grade blocks)
 
-Organization is by **grade–semester reading order**, not raw textbook unit order. Source of truth for order/titles: `wonders_lessons.md`, `emerge_lessons.md`, `story_texts.xlsx`.
+Organization is by **grade–semester reading order**, not raw textbook unit order. Source of truth for order/titles: `wonders_lessons.md`, `story_texts.xlsx`.
+
+**S / MAG (Emerge) are out of scope.** Prelesson Games are GT / MGT only. Do not add Emerge rows.
 
 **Wonders (GT / MGT) — 48 unique games, dual-tagged shared rows:**
 
@@ -222,33 +224,20 @@ Organization is by **grade–semester reading order**, not raw textbook unit ord
 | **GT3-1 / MGT2-2** | L1–8 | Set Sail U3 + Into the Horizon U1 |
 | **GT3-2 / MGT3-1** | L1–8 | Into the Horizon U2–U3 |
 
-**Emerge (S / MAG) — 48 slots, dual-tagged where listed:**
-
-| Block | Lessons |
-|-------|---------|
-| **S1-1** | L1–6 |
-| **S1-2** | L7–12 |
-| **S2-1 / MAG1-1** | L1–6 |
-| **S2-2 / MAG1-2** | L7–12 |
-| **S3-1 / MAG2-1** | L1–6 |
-| **S3-2 / MAG2-2** | L7–12 |
-| **MAG3-1** | L1–6 |
-| **MAG3-2** | L7–12 |
-
 **Semester dropdown mapping:**
 
 | Semester | Levels |
 |----------|--------|
-| 2028-1 | GT1-1, MGT1-1, S1-1, MAG1-1 |
-| 2028-2 | GT1-2, MGT1-2, S1-2, MAG1-2 |
-| 2029-1 | GT2-1, MGT2-1, S2-1, MAG2-1 |
-| 2029-2 | GT2-2, MGT2-2, S2-2, MAG2-2 |
-| 2030-1 | GT3-1, MGT3-1, S3-1, MAG3-1 |
-| 2030-2 | GT3-2, MGT3-2, S3-2, MAG3-2 |
+| 2028-1 | GT1-1, MGT1-1 |
+| 2028-2 | GT1-2, MGT1-2 |
+| 2029-1 | GT2-1, MGT2-1 |
+| 2029-2 | GT2-2, MGT2-2 |
+| 2030-1 | GT3-1, MGT3-1 |
+| 2030-2 | GT3-2, MGT3-2 |
 
-**Total unique Excel / website game rows: 96** (48 Wonders + 48 Emerge). Dual-tagged partners share one row (`GT1-2_L01 / MGT1-1_L01`, `S2-1_L01 / MAG1-1_L01`). `MGT3-2` is listed in 2030-2 but has no content yet (Coming soon).
+**Total unique Excel / website game rows: 48** (Wonders GT / MGT only). Dual-tagged partners share one row (`GT1-2_L01 / MGT1-1_L01`). `MGT3-2` is listed in 2030-2 but has no content yet (Coming soon).
 
-> **Shared content rule:** When two levels share a dual-tagged block, the **prelesson game plan is identical**. The MAG (or MGT) partner usually appears in the earlier semester; the later S (or GT) partner shows the same games as a repeat.
+> **Shared content rule:** When two levels share a dual-tagged block, the **prelesson game plan is identical**. The MGT partner usually appears in the earlier semester; the later GT partner shows the same games as a repeat.
 
 ### 3.3 Lesson inventory (48 unique curriculum lessons)
 
@@ -317,11 +306,11 @@ Create one `.xlsx` file named:
 Prelesson_Game_Scope_Sequence.xlsx
 ```
 
-**Current workbook:** `Prelesson_Game_Scope_Sequence_v8.xlsx` — **96 unique game rows** (48 Wonders + 48 Emerge), dual-tagged IDs where partners share a plan.
+**Current workbook:** `Prelesson_Game_Scope_Sequence_v8.xlsx` — **48 unique game rows** (Wonders GT / MGT only), dual-tagged IDs where partners share a plan.
 
 **Sheets in use:** `Lesson_Details`, `Game_Overview`, `Video_Information`, `Mission_1/2/3_Details`, `Agent_Details`, `Asset_Lists`, `Dev_Details`, `README`.
 
-Alternatively, a single `Master_Plan` sheet with filters is acceptable if all 104 rows are present.
+Alternatively, a single `Master_Plan` sheet with filters is acceptable if all 48 rows are present.
 
 ### 4.2 Required columns (Master_Plan sheet)
 
@@ -491,7 +480,7 @@ Follow format and rules from `SAMPLE_APP.md` Section 25. All n8n prompts must id
 
 ## 5. Step-by-Step Workflow for the Future Agent
 
-For **each of the 104 rows**, execute this workflow in order:
+For **each of the 48 rows**, execute this workflow in order:
 
 ### Step 1 — Load lesson data
 
@@ -712,7 +701,7 @@ The future agent **must not invent** missing curriculum content. When source dat
 Planned → Needs Review → Ready for Build
 ```
 
-All 104 rows should reach at least `Planned` before delivery. Flag high-complexity rows (`Complexity` = `High`) for human review.
+All 48 rows should reach at least `Planned` before delivery. Flag high-complexity rows (`Complexity` = `High`) for human review.
 
 ---
 
@@ -723,7 +712,8 @@ All 104 rows should reach at least `Planned` before delivery. Flag high-complexi
 - **Do not** invent missing curriculum data — flag gaps in `Missing_Source_Data` instead
 - **Do not** create different plans for GT vs MGT rows sharing the same lesson
 - **Do not** use humanoid player avatars — vehicle or non-humanoid only
-- **Do not** skip rows — all 104 level × lesson instances required
+- **Do not** skip rows — all 48 GT / MGT game rows required
+- **Do not** add S / MAG / Emerge rows
 - **Do not** change the game structure (mission types, beat order, 3-mission default)
 - **Do not** fully resolve the Module Goal in the prelesson — always bridge to Module Map class games
 - **Do not** use placeholder image URLs (placehold.co, etc.) in asset plans — describe assets textually
@@ -735,7 +725,7 @@ All 104 rows should reach at least `Planned` before delivery. Flag high-complexi
 Before submitting the workbook:
 
 - [ ] File named `Prelesson_Game_Scope_Sequence.xlsx`
-- [ ] 104 rows in `Master_Plan` (11 levels × their lesson counts)
+- [ ] 48 rows in `Master_Plan` (GT / MGT only; dual-tagged partners share a row)
 - [ ] Every required column from Section 4.2 populated (or documented reason in `Notes`)
 - [ ] GT1-1 Lesson 1 row aligns with `SAMPLE_APP.md` (Bug Me! / insects)
 - [ ] All 48 unique curriculum lessons covered across levels

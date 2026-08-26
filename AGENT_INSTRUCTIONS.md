@@ -1,7 +1,9 @@
 # Agent Instructions — Prelesson Game Narrative Redesign
 
 > **Audience:** Future Cursor agents working on this project.
-> **Primary deliverable:** Keep lesson designs, the Excel workbook, and the **deployed dashboard** (`public/index.html`) in sync — **English and Korean** (§0.14). Edit `scripts/lesson_designs.py` / `scripts/emerge_lesson_designs.py` first, then regenerate content with the Python scripts in `scripts/`.
+> **Primary deliverable:** Keep lesson designs, the Excel workbook, and the **deployed dashboard** (`public/index.html`) in sync — **English and Korean** (§0.14). Edit `scripts/lesson_designs.py` first, then regenerate content with the Python scripts in `scripts/`.
+>
+> **Out of scope:** **S** and **MAG** (Emerge) levels do **not** get Prelesson Games. Do not add, restore, or regenerate S/MAG/Emerge lesson rows in the dashboard, Excel, or designs.
 
 ---
 
@@ -14,8 +16,7 @@ These rules reflect the **live** scope-and-sequence dashboard and the asset mode
 | File | Role |
 |------|------|
 | `public/index.html` | **Deployed** scope-and-sequence dashboard (Cloudflare Workers + KV). Git tracks this file. |
-| `scripts/lesson_designs.py` | Narrative designs for Wonders lessons (local; gitignored). |
-| `scripts/emerge_lesson_designs.py` | Narrative designs for Emerge lessons (local; gitignored). |
+| `scripts/lesson_designs.py` | Narrative designs for Wonders (GT / MGT) lessons (local; gitignored). |
 | `scripts/generate_scope_sequence.py` | Regenerates Wonders rows + asset manifest into xlsx. |
 | `scripts/apply_quest_updates.py` | Syncs quest narratives, mission labels, landmarks, and agent copy into `public/index.html`. |
 | `scripts/sync_asset_lists.py` | Rebuilds `Asset_Lists` in `public/index.html` from `build_asset_manifest()`. |
@@ -329,7 +330,7 @@ Field list source of truth: `TRANSLATE_FIELDS` in `scripts/korean_i18n.py`.
 
 #### Required workflow after English text edits
 
-1. Edit English in `scripts/lesson_designs.py` / `scripts/emerge_lesson_designs.py` (preferred) or regenerate xlsx.
+1. Edit English in `scripts/lesson_designs.py` (preferred) or regenerate xlsx.
 2. Sync English into the dashboard:
    ```bash
    python scripts/apply_quest_updates.py
@@ -446,13 +447,11 @@ Improve **all prelesson game narratives** so they are:
 |------|------|
 | `data/Prelesson_Game_Scope_Sequence_v8.xlsx` | Workbook the user reviews (edit this; keep tabs in sync) |
 | `scripts/lesson_designs.py` | Narrative designs for Wonders / Fly High / All Aboard / Set Sail / Into the Horizon lessons |
-| `scripts/emerge_lesson_designs.py` | Narrative designs for Emerge (S1 / MAG) lessons |
 | `scripts/generate_scope_sequence.py` | Regenerates Wonders rows into the xlsx + `build_asset_manifest()` |
 | `scripts/apply_quest_updates.py` | Syncs narratives / mission labels / landmarks → `public/index.html`; merges Korean cache → `ko_strings` |
 | `scripts/sync_asset_lists.py` | Syncs asset lists from manifest → `public/index.html` |
 | `scripts/build_korean_cache.py` | Translates missing EN dashboard strings → `data/korean_content_cache.json` (**required after text edits**; §0.14) |
-| `scripts/update_emerge_rows.py` / `scripts/append_emerge_rows.py` | Refresh Emerge rows in the xlsx |
-| `wonders_lessons.md` / `emerge_lessons.md` | Curriculum context (EQ, stories, vocab) |
+| `wonders_lessons.md` | Curriculum context (EQ, stories, vocab) |
 | `SAMPLE_APP.md` | Engine/template reference |
 | `SUMMARY.md` | Original planning brief (structure still applies) |
 
@@ -465,10 +464,10 @@ Improve **all prelesson game narratives** so they are:
 ### Workflow for this phase
 
 1. Read curriculum context (topic, EQ, story summaries) for each lesson.
-2. Redesign narrative fields in `scripts/lesson_designs.py` / `scripts/emerge_lesson_designs.py` (preferred), **or** edit the xlsx directly if regenerating is not possible — but keep all related columns/tabs consistent.
+2. Redesign narrative fields in `scripts/lesson_designs.py` (preferred), **or** edit the xlsx directly if regenerating is not possible — but keep all related columns/tabs consistent.
 3. Regenerate / update `data/Prelesson_Game_Scope_Sequence_v8.xlsx` with:
-   - `python scripts/generate_scope_sequence.py` (48 Wonders rows)
-   - Prefer `python scripts/reorg_reading_order.py` to rebuild Emerge (48 reading-order slots) + sync Excel from `public/index.html`. Legacy `append_emerge_rows.py` / `update_emerge_rows.py` expect older 24-row layouts.
+   - `python scripts/generate_scope_sequence.py` (48 Wonders / GT-MGT rows)
+   - Do **not** rebuild Emerge / S / MAG rows.
 4. After regenerate, clear **Game_Overview** review fills to white if the user wants a clean overview tab (do **not** change narrative text there unless asked).
 5. Present changes for user review and iterate.
 6. After Excel approval (or when asked): run `python scripts/apply_quest_updates.py`, `python scripts/sync_asset_lists.py`, **`python scripts/build_korean_cache.py`**, then **`python scripts/apply_quest_updates.py` again** to merge Korean, then commit `public/index.html` for Cloudflare deploy. Preview with Live Server on `public/index.html`.
@@ -521,7 +520,7 @@ Every lesson needs:
 Each mission reward must answer: **“Why does the main goal need this?”**  
 If the answer is only “to fill a HUD slot,” redesign it.
 
-**Uniqueness rule:** Mission reward items must **not repeat** across lessons (case-insensitive). Before finalizing a reward name, check all other `reward_desc` values in `scripts/lesson_designs.py` and `scripts/emerge_lesson_designs.py`.
+**Uniqueness rule:** Mission reward items must **not repeat** across lessons (case-insensitive). Before finalizing a reward name, check all other `reward_desc` values in `scripts/lesson_designs.py`.
 
 **Variety within a lesson:** The three rewards/actions should feel different from each other (not “left bolt / middle bolt / right bolt”). Prefer three distinct objects or three distinct jobs.
 
@@ -545,7 +544,7 @@ The prelesson and Module Map must feel like **one story**:
 | “…they understand trade” | “…they load the cargo boat with Trader Omar and send the goods” |
 | “…they learn how stories teach lessons” | “…they start Tale Night with Amara and share stories from many places” |
 
-This is especially important for **Emerge** lessons, which previously overused “learn/understand” endings. Wonders lessons already follow the concrete-event pattern — match that quality for Emerge.
+This is especially important for Module Map endings. Do not use vague “learn/understand” slogans — every lesson should end on a concrete event.
 
 **Good example (treasure):**
 - Prelesson Mission 3 recovers the **treasure map** and unlocks the Module Map
@@ -635,12 +634,11 @@ When `Purpose_And_Goals` (or underlying design fields) change, sync related cont
 
 ### Preferred regeneration path
 
-1. Edit `scripts/lesson_designs.py` / `scripts/emerge_lesson_designs.py`
+1. Edit `scripts/lesson_designs.py`
 2. Snapshot the current xlsx cell values (for yellow highlighting)
-3. Run `python scripts/generate_scope_sequence.py` (Wonders rows)
-4. Run `python scripts/append_emerge_rows.py` or `python scripts/update_emerge_rows.py` (Emerge rows)
-5. **Yellow-highlight every cell whose value changed** (`FFFF00` fill). Do **not** recolor unchanged cells.
-6. Spot-check `Game_Overview`, `Agent_Details`, `Asset_Lists`, `Antagonist`
+3. Run `python scripts/generate_scope_sequence.py` (Wonders / GT-MGT rows)
+4. **Yellow-highlight every cell whose value changed** (`FFFF00` fill). Do **not** recolor unchanged cells.
+5. Spot-check `Game_Overview`, `Agent_Details`, `Asset_Lists`, `Antagonist`
 
 ### Change-highlight rule (user review aid)
 
@@ -720,8 +718,7 @@ When finishing a narrative pass:
 2. Yellow-highlight only changed cells when doing Excel review passes.
 3. Confirm no duplicate mission rewards across the workbook.
 4. Commit `public/index.html` when deploying; preview with Live Server on `public/index.html`.
-5. Confirm Emerge `Purpose_And_Goals` / `module_goal` lines are concrete events.
-6. Summarize for the user:
+5. Summarize for the user:
    - How many lessons changed
    - Patterns used (parts / actions / villain / helper)
    - Notable Module Map bridges
